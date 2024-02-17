@@ -155,18 +155,18 @@ class Crafter(Env):
 
     def reset(self):
         self.history.reset()
-        super().reset()
-        obs, reward, done, info = self.step(0)
-        self.score_tracker = 0 + sum([1. for k,v in info['achievements'].items() if v>0])
-        info.update({'manual': self.desc,
-                'obs': describe_frame(info, None),
-                'history': self.history.describe(),
-                'score': self.score_tracker,
-                'done': done,
-                'completed': 0,
-                })
-        self.history.step(info)
-        return obs, info
+        # super().reset()
+        # obs, reward, done, info = self.step(0)
+        # self.score_tracker = 0 + sum([1. for k,v in info['achievements'].items() if v>0])
+        # info.update({'manual': self.desc,
+        #         'obs': describe_frame(info, None),
+        #         'history': self.history.describe(),
+        #         'score': self.score_tracker,
+        #         'done': done,
+        #         'completed': 0,
+        #         })
+        # self.history.step(info)
+        return super().reset()
     
     def step(self, action):
         obs, reward, done, info = super().step(action)
